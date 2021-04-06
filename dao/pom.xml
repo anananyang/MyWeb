@@ -11,5 +11,11 @@
 
     <artifactId>dao</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.anyang</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+    </dependencies>
+    
 </project>
