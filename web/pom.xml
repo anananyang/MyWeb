@@ -35,7 +35,7 @@
 
         <dependency>
             <groupId>com.anyang</groupId>
-            <artifactId>service</artifactId>
+            <artifactId>biz</artifactId>
         </dependency>
     </dependencies>
 
