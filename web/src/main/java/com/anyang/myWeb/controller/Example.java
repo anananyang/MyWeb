@@ -1,10 +1,14 @@
 package com.anyang.myWeb.controller;
 
-import com.anyang.myWeb.ExampleService;
+import com.anyang.myWeb.config.MyWebConfig;
+import com.anyang.myWeb.entity.user.User;
+import com.anyang.myWeb.service.ExampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("example")
@@ -15,7 +19,7 @@ public class Example {
 
     @RequestMapping("hello")
     @ResponseBody
-    public String hello() {
+    public List<User> hello() {
         return exampleService.greet();
     }
 }
