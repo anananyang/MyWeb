@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <!--要根据不同的 Mysql 版本来设置，具体需要查看 Mysql 的官方文档-->
+        <property name="driverClassName" value="${myWeb.hikari.driver.name}" />
+        <property name="jdbcUrl" value="${myWeb.hikari.jdbc.url}" />
+        <property name="username" value="${myWeb.hikari.username}" />
+        <property name="password" value="${myWeb.hikari.password}" />
+        <!--连接池相关配置，这里按照 HikariCP readme 中经常使用的配置项来配置-->
+        <!--<property name="autoCommit" value="true" />-->   <!--默认 true-->
+        <property name="connectionTimeout" value="30000" />
+        <property name="minimumIdle" value="8" />
+        <property name="maximumPoolSize" value="64" />
+        <!--connection 创建之后需要执行的 sql, 这里是设置一下 Mysql 的字符集-->
+        <property name="connectionInitSql" value="${myWeb.hikari.connectionInitSql}" />
+
+        <!--mysql 相关的配置-->
+        <property name="dataSourceProperties" ref="hikariCPProperties" />
+
+    </bean>
+
+    <!--hikariCP 针对 mysql 相关的配置-->
+    <util:map id="hikariCPProperties" map-class="java.util.Properties">
+        <!--Mysql 驱动对每个连接缓存的 prepared sql statements 的数量，推荐 250 - 500-->
+        <entry key="prepStmtCacheSize" value="250" />
+        <!--Mysql 驱动将会缓存的 prepared sql statements 的最大长度，推荐设置 2048-->
+        <entry key="prepStmtCacheSqlLimit" value="2048" />
+        <!--如果 cache 被禁止，prepStmtCacheSize、prepStmtCacheSqlLimit 不会生效，所以要开启-->
+        <entry key="cachePrepStmts" value="true" />
+        <!--最新版本的 Mysql 支持服务端 prepared statements, 这个会带来性能上的提升-->
+        <entry key="useServerPrepStmts" value="true" />
+        <entry key="useLocalSessionState" value="true" />
+        <entry key="rewriteBatchedStatements" value="true" />
+        <entry key="cacheResultSetMetadata" value="true" />
+        <entry key="cacheServerConfiguration" value="true" />
+        <entry key="elideSetAutoCommits" value="true" />
+        <entry key="maintainTimeStats" value="false" />
+    </util:map>
+
+</beans>

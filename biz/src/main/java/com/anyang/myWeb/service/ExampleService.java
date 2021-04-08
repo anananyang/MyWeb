@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 @Service
 public class ExampleService {
@@ -13,7 +15,14 @@ public class ExampleService {
     @Autowired
     private UserService userService;
 
-    public List<User> greet() {
-       return userService.getAll();
+
+
+    public Map<String, Object> greet() {
+        List<User> userList = userService.getAll();
+
+        Map<String, Object> result = new TreeMap<>();
+        result.put("userList", userList);
+
+        return result;
     }
 }
