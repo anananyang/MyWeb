@@ -40,6 +40,14 @@
         <entry key="cacheServerConfiguration" value="true" />
         <entry key="elideSetAutoCommits" value="true" />
         <entry key="maintainTimeStats" value="false" />
+
+        <entry key="serverTimezone" value="Asia/Shanghai" />
+        <entry key="useUnicode" value="true" />
+        <entry key="characterEncoding" value="utf-8" />
+        <entry key="autoReconnect" value="true" />
+        <entry key="allowMultiQueries" value="true" />
+        <entry key="zeroDateTimeBehavior" value="convertToNull" />
+        <entry key="useSSL" value="false" />
     </util:map>
 
 </beans>
