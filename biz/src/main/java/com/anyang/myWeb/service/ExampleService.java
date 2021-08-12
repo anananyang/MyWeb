@@ -3,8 +3,11 @@ package com.anyang.myWeb.service;
 import com.anyang.myWeb.entity.user.User;
 import com.anyang.myWeb.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.EmbeddedValueResolver;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -14,8 +17,6 @@ public class ExampleService {
 
     @Autowired
     private UserService userService;
-
-
 
     public Map<String, Object> greet() {
         List<User> userList = userService.getAll();

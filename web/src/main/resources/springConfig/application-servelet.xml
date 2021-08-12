@@ -8,5 +8,4 @@
     <import resource="dataSource.xml" />
     <import resource="spring-mybatis.xml" />
 
-
 </beans>

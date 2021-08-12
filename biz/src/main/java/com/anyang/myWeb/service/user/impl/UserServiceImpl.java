@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.anyang.myWeb.service.base.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.anyang.myWeb.service.user.UserService;
